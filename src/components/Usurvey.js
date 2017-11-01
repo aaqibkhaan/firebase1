@@ -38,6 +38,13 @@ class Usurvey extends Component {
 	}
 	questionSubmit() {
 
+		firebase.database().ref('Usurvey/' + this.state.uid).set({
+			studentName: this.state.studentName,
+			answers : this.state.answers
+
+		});
+		this.setState({isSubmitted: true});
+
 
 	}
 

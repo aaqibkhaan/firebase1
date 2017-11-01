@@ -54,7 +54,7 @@ class Usurvey extends Component {
 		this.state = {
 			uid: uuid.v1(),
 		
-			studentName : 'John Doe',
+			studentName : '',
 		
 			answers : {
 				answer1: '',
@@ -116,6 +116,9 @@ class Usurvey extends Component {
           </form>
 			</div>
 
+		} else if (this.state.isSubmitted === true) {
+
+			studentName = <div> <h1> Thanks, {this.state.studentName} </h1> </div>
 		}
 		return (
 			<div>

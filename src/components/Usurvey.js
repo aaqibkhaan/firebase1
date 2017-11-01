@@ -16,6 +16,11 @@ var uuid = require('uuid');
 
 class Usurvey extends Component {
 
+	NameForm (event) {
+		var studentName = this.refs.name.value;
+		this.setState({studentName});
+	}
+
 	constructor(props) {
 		super(props);
 
@@ -33,16 +38,40 @@ class Usurvey extends Component {
 			isSubmitted: false
 		};
 
+		this.NameForm = this.NameForm.bind(this);
+
 	}
 
 
 	render() {
+		var studentName;
+		var questions;
 
+		if (this.state.studentName === '' && this.state.isSubmitted === false) {
+				studentName = <div> 
+				<h1> Please LET us know your name</h1>
+					<form onSubmit = {this.NameForm}> 
+						<input className="nameInput" type="text" placeholder="Enter your Name" ref="name" />
+					</form>
+				</div>;
+				questions= ''
+		} else if(this.state.studentName !== '' && this.state.isSubmitted === false) {
+
+			studentName = <div> 
+					<h2> Welcome {this.state.studentName}</h2>
+			</div>
+
+			questions = <div> Which Courses do you like?</div>
 
 		}
 		return (
 			<div>
-			You are inside Usurvey
+
+				{studentName}
+
+				----------------------------------------------------
+
+				{questions}
 			</div>
 			);
 	}
